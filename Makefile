@@ -1,3 +1,4 @@
+DOCKER_FLASK_VERSION ?= '0.2.0'
 
 build-image:
 	@ docker build -t ownport/flask:latest .
