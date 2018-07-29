@@ -3,7 +3,7 @@
 Docker image for Flask application, Alpine based
 
 Configuration:
-- alpine:3.7
+- alpine:3.8
 - flask: latest
 - nginx
 - uwsgi
@@ -17,12 +17,21 @@ $ make build
 
 - in production mode
 ```sh
-$ make run-application
+$ make run-app
 ```
 - in debug mode
 ```sh
-$ make run-application-debug
+$ make run-app-debug
 ``` 
+
+## List of installed python packages
+
+- click==6.7
+- Flask==1.0.2
+- itsdangerous==0.24
+- Jinja2==2.10
+- MarkupSafe==1.0
+- Werkzeug==0.14.1
 
 ## Links
 
