@@ -1,33 +1,42 @@
 #!/bin/sh
 
-echo "[INFO] Install base packages" && \
-    apk add --no-cache \
-        nginx \
-        uwsgi \
-        uwsgi-python3 \
-        python3 \
-        runit
+set -e
 
-echo "[INFO] Install python3 deps" && \
-    pip3 install \
-        flask
+if [ -e /tmp/assets/conf/build-deps.packages ] && [ -s /tmp/assets/conf/build-deps.packages ] ; then
+	echo "[INFO] Install build deps" && \
+        apk add --no-cache --virtual build-deps \
+            $(cat /tmp/assets/conf/build-deps.packages) 
+fi
 
-echo '[INFO] Update scripts and configs' && \
-    mv /tmp/assets/sbin/entrypoint.sh /sbin && \
-    mv /tmp/assets/conf/nginx.conf /etc/nginx/nginx.conf &&\
-    mv /tmp/assets/conf/app.ini /etc/flask-app.ini
+if [ -e /tmp/assets/conf/alpine.packages ] && [ -s /tmp/assets/conf/alpine.packages ] ; then
+	echo "[INFO] Install Alpine packages" && \
+        apk add --no-cache \
+            $(cat /tmp/assets/conf/alpine.packages) 
+fi
 
-echo '[INFO] Configure application' && \
-    export APP_DIR='/app' && \
-    mkdir ${APP_DIR} && \
-    chown -R nginx:nginx ${APP_DIR} && \
-    chmod 777 -R /run  
+if [ -e /tmp/assets/conf/python.packages ] && [ -s /tmp/assets/conf/python.packages ] ; then
+	echo "[INFO] Install Python packages" && \
+        pip3 install --upgrade -r /tmp/assets/conf/python.packages
+fi
 
-echo '[INFO] Install sample application' && \
-    mv /tmp/assets/app/* /app/
+if [ -d /tmp/assets/sbin/ ] ; then
+    echo '[INFO] Update scripts'
+    [ -f /tmp/assets/sbin/entrypoint.sh ] && mv /tmp/assets/sbin/entrypoint.sh /sbin
+    [ -f /tmp/assets/sbin/install.sh ] && mv /tmp/assets/sbin/install.sh /sbin
+    [ -f /tmp/assets/sbin/cleanup.sh ] && mv /tmp/assets/sbin/cleanup.sh /sbin
+fi
 
-echo "[INFO] Remove build deps and clear temp files" && \
-    # apk del .build-deps && \
-    rm -rf /tmp/* \
-    rm -rf /usr/lib/python3.6/ensurepip/_bundled/*
+if [ -e /tmp/assets/conf/build-deps.packages ] && [ -s /tmp/assets/conf/build-deps.packages ] ; then
+	echo "[INFO] Remove build deps" && \
+        apk del build-deps
+fi
+
+echo "[INFO] List of installed python packages" && \
+    pip3 freeze
+
+echo "[INFO] Install and configure Flask application(-s)" && \
+    /tmp/assets/sbin/install-flask.sh
+
+echo "[INFO] Cleanup procedure" && \
+    /sbin/cleanup.sh
 

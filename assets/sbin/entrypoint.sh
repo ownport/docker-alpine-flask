@@ -13,7 +13,7 @@ fi
 case ${1} in
     app:start)        
         echo "[INFO] Running application in production mode"
-        nginx && uwsgi --master --ini /etc/flask-app.ini
+        nginx && uwsgi --master --ini /app/conf/flask-app.ini
         ;;
     app:debug)        
         echo "[WARNING] Running application in debug mode"
