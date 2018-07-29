@@ -13,6 +13,13 @@ Configuration:
 $ make build
 ```
 
+## How to get docker image
+
+```sh
+$ docker pull ownport/flask:<version>
+```
+
+
 ## How to run Flask application
 
 - in production mode
