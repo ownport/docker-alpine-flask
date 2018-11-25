@@ -7,7 +7,7 @@ if [ -e apk-requirements.txt ]; then
 fi
 
 if [ -e py3-requirements.txt ]; then
-	pip2 install -r py3-requirements.txt
+	pip3 install -r py3-requirements.txt
 fi
 
 case ${1} in
