@@ -1,4 +1,4 @@
-DOCKER_FLASK_VERSION ?= '0.2.0'
+DOCKER_FLASK_VERSION ?= '0.2.1'
 
 build-image:
 	@ docker build -t ownport/flask:$(DOCKER_FLASK_VERSION) .
