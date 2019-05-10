@@ -5,6 +5,7 @@ Docker image for Flask application, Alpine based
 Configuration:
 - alpine:3.8
 - flask: latest
+- gunicorn: latest
 - nginx
 - uwsgi
 
@@ -39,6 +40,7 @@ $ make run-app-debug
 - Jinja2==2.10
 - MarkupSafe==1.0
 - Werkzeug==0.14.1
+- gunicorn==
 
 ## Links
 
