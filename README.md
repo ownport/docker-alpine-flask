@@ -4,34 +4,35 @@ Docker image for Flask application, Alpine based
 
 ## List of pre-installed python packages
 
-- Click==7.0
-- Flask==1.0.2
-- gunicorn==19.9.0
-- itsdangerous==1.1.0
-- Jinja2==2.10.1
-- MarkupSafe==1.1.1
-- Werkzeug==0.15.2
+Click==7.0
+Flask==1.0.2
+gunicorn==19.9.0
+itsdangerous==1.1.0
+Jinja2==2.10.1
+MarkupSafe==1.1.1
+Werkzeug==0.15.2
+
 
 ## How to build image
 ```sh
 $ make build
 ```
 
-## How to get docker image
+## How to build docker image for Flask application
 
 ```sh
-$ docker pull ownport/flask:<version>
+$ make build
 ```
 
-## How to run Flask application
+## How to work with environment
 
-- in production mode
+to start Flask application
 ```sh
-$ make run-app
+$ docker-compose up
 ```
-- in debug mode
+to stop Flask application
 ```sh
-$ make run-app-debug
+$ docker-compose down
 ``` 
 
 
