@@ -1,0 +1,20 @@
+
+version: '3'
+
+services:
+  flask-app:
+    restart: always
+    image: ownport/flask-app:0.2.1
+    command: gunicorn --bind 0.0.0.0:5000 --workers=3 wsgi:app
+
+  nginx-server:
+    restart: always
+    image: nginx:1.15-alpine
+    depends_on:
+      - flask-app
+    links:
+      - flask-app:flask-app
+    volumes:
+      - ${PWD}/conf/nginx/conf.d:/etc/nginx/conf.d:ro
+
+
