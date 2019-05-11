@@ -26,6 +26,10 @@ if [ -d /tmp/assets/sbin/ ] ; then
     [ -f /tmp/assets/sbin/cleanup.sh ] && mv /tmp/assets/sbin/cleanup.sh /sbin
 fi
 
+echo '[INFO] Install sample application' && \
+    mkdir -p /app && \
+    mv /tmp/assets/app/* /app/
+
 if [ -e /tmp/assets/conf/build-deps.packages ] && [ -s /tmp/assets/conf/build-deps.packages ] ; then
 	echo "[INFO] Remove build deps" && \
         apk del build-deps
@@ -33,9 +37,6 @@ fi
 
 echo "[INFO] List of installed python packages" && \
     pip3 freeze
-
-echo "[INFO] Install and configure Flask application(-s)" && \
-    /tmp/assets/sbin/install-flask.sh
 
 echo "[INFO] Cleanup procedure" && \
     /sbin/cleanup.sh

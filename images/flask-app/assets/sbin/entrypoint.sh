@@ -2,6 +2,8 @@
 
 set -eu
 
+CONTAINER_IP_ADDRESS=$(hostname -i)
+
 if [ -e apk-requirements.txt ]; then
 	apk add --no-cache $(cat apk-requirements.txt) 
 fi
@@ -12,11 +14,13 @@ fi
 
 case ${1} in
     app:start)        
-        echo "[INFO] Running application in production mode"
-        nginx && uwsgi --master --ini /app/conf/flask-app.ini
+        echo "[INFO] Running application"
+        gunicorn --bind 0.0.0.0:5000 \
+            --workers=3 \
+            wsgi:app
         ;;
     app:debug)        
-        echo "[WARNING] Running application in debug mode"
+        echo "[WARNING] Running application in debug mode, http://${CONTAINER_IP_ADDRESS}:80/"
         python3 /app/main.py
         ;;
     help)

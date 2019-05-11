@@ -17,8 +17,3 @@ echo '[INFO] Remove temporary files' && \
 
 echo '[INFO] Remove __pycache__ dirs' && \
     cleanup_pycache "/usr/lib/python3.6/"
-    # for path in "/usr/lib/python3.6/" \
-    #             "/usr/local/lib/python3.6/dist-packages"
-    # do
-    #     cleanup_pycache ${path}
-    # done 
