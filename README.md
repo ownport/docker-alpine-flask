@@ -14,11 +14,6 @@ MarkupSafe==1.1.1
 Werkzeug==0.15.2
 ```
 
-## How to build image
-```sh
-$ make build
-```
-
 ## How to build docker image for Flask application
 
 ```sh
