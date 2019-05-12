@@ -5,7 +5,7 @@ services:
   flask-app:
     restart: always
     image: ownport/flask-app:0.2.1
-    command: gunicorn --bind 0.0.0.0:5000 --workers=3 wsgi:app
+    command: gunicorn --bind :5000 --workers=3 wsgi:app
 
   nginx-server:
     restart: always
