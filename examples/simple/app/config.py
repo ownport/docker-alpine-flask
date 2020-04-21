@@ -9,4 +9,6 @@ class ProdConfig(Config):
 
 class DevConfig(Config):
 
-    DEBUG   = True
+    DEBUG                       = True
+    SQLALCHEMY_DATABASE_URI     = "TO BE DESCRIBED LATER"
+
