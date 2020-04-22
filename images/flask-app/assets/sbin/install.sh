@@ -26,9 +26,9 @@ if [ -d /tmp/assets/sbin/ ] ; then
     [ -f /tmp/assets/sbin/cleanup.sh ] && mv /tmp/assets/sbin/cleanup.sh /sbin
 fi
 
-echo '[INFO] Install sample application' && \
-    mkdir -p /app && \
-    mv /tmp/assets/app/* /app/
+# echo '[INFO] Install sample application' && \
+#     mkdir -p /app && \
+#     mv /tmp/assets/app/* /app/
 
 if [ -e /tmp/assets/conf/build-deps.packages ] && [ -s /tmp/assets/conf/build-deps.packages ] ; then
 	echo "[INFO] Remove build deps" && \
