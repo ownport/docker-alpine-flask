@@ -1,5 +1,19 @@
 # CHANGELOG
 
+## 0.3.0-dev
+
+- docker image based on alpine:3.11.2
+- simplify flask dev env compare to version 0.2.x
+- Flask 1.1.2 with deps
+- PyYAML package for configs
+- added simple flask app (examples/simple/)
+- added cleanup for python 3.8
+- 
+
+## 0.2.3
+
+- to be described later
+
 ## v0.2.2
 
 - added flask-sqlalchemy
