@@ -1,5 +1,7 @@
 #!/bin/sh
 
+PYTHON_VERSION="3.8"
+
 cleanup_pycache() {
 
     _PATH=${1:-}
@@ -16,4 +18,4 @@ echo '[INFO] Remove temporary files' && \
         /var/lib/apt/lists/*
 
 echo '[INFO] Remove __pycache__ dirs' && \
-    cleanup_pycache "/usr/lib/python3.6/"
+    cleanup_pycache "/usr/lib/python${PYTHON_VERSION}/"
