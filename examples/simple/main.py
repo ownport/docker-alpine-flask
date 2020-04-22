@@ -2,6 +2,9 @@
 import logging
 
 from flask import Flask
+from flask import jsonify
+from flask import make_response
+
 app = Flask(__name__)
 
 logger = logging.getLogger(__name__)
@@ -9,9 +12,14 @@ logger = logging.getLogger(__name__)
 
 @app.route("/")
 def hello():
-    return "Test application"
+    return make_response(jsonify({
+        'application':  'testApplication',
+        'config':       dict((k, str(v)) for k,v in  app.config.items()),
+    }))
 
 
 if __name__ == "__main__":
+
     logger.warning('The server started in debug mode')
-    app.run(host='0.0.0.0', debug=True, port=80)
+    app.config.from_object('configs.DevelopmentConfig')
+    app.run()
