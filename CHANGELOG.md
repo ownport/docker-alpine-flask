@@ -8,7 +8,7 @@
 - PyYAML package for configs
 - added simple flask app (examples/simple/)
 - added cleanup for python 3.8
-- 
+- added flask-marshmellow
 
 ## 0.2.3
 
