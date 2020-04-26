@@ -14,6 +14,7 @@
     - psycopg2
 - added alpine packages
     - libpq
+    - httpie
 
 ## 0.2.3
 
