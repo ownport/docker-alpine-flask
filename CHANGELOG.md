@@ -11,6 +11,7 @@
 - added python packages
     - flask-marshmellow
     - flask-migrate
+    - psycopg2
 
 ## 0.2.3
 

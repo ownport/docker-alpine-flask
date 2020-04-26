@@ -35,6 +35,7 @@ Jinja2==2.11.2
 Mako==1.1.2
 MarkupSafe==1.1.1
 marshmallow==3.5.1
+psycopg2==2.8.5
 python-dateutil==2.8.1
 python-editor==1.0.4
 PyYAML==5.3.1

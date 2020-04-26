@@ -1,0 +1,5 @@
+gcc
+postgresql-dev
+python3-dev
+build-base
+
