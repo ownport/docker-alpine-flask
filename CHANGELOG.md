@@ -12,6 +12,8 @@
     - flask-marshmellow
     - flask-migrate
     - psycopg2
+- added alpine packages
+    - libpq
 
 ## 0.2.3
 
